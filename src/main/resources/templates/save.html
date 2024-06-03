@@ -1,6 +1,12 @@
-<html>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
     <title>회원가입</title>
+    <script
+            src="https://code.jquery.com/jquery-3.6.3.min.js"
+            integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+            crossorigin="anonymous"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -61,7 +67,7 @@
 <div class="signup-form">
     <h2>회원가입</h2>
     <form action="/member/save" method="post">
-        <input type="text" name="memberEmail" placeholder="이메일" id="memberEmail" onblur="emailCheck()">
+        <input type="text" name="memberEmail" placeholder="이메일" id="memberEmail" onkeyup="emailCheck()">
         <p id="check-result"></p>
         <input type="password" name="memberPassword" placeholder="비밀번호">
         <input type="text" name="memberName" placeholder="이름">
@@ -69,13 +75,14 @@
         <input type="text" name="memberMobile" placeholder="전화번호">
         <input type="submit" value="회원가입">
     </form>
+    <button onclick="goToindex()">이전</button>
 </div>
 </body>
-<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-<script>
+<script th:inline="javascript">
     const emailCheck = () => {
         const email = document.getElementById("memberEmail").value;
         const checkResult = document.getElementById("check-result");
+        console.log("입력값: ", email);
         $.ajax({
             type: "post",
             url: "/member/email-check",
@@ -83,20 +90,24 @@
                 "memberEmail": email
             },
             success: function(res) {
+                console.log("요청성공", res);
                 if (res == "ok") {
-                    checkResult.classList.remove("red");
-                    checkResult.classList.add("green");
-                    checkResult.innerHTML = "사용 가능한 이메일";
+                    console.log("사용가능한 이메일");
+                    checkResult.style.color = "green";
+                    checkResult.innerHTML = "사용가능한 이메일";
                 } else {
-                    checkResult.classList.remove("green");
-                    checkResult.classList.add("red");
+                    console.log("이미 사용중인 이메일");
+                    checkResult.style.color = "red";
                     checkResult.innerHTML = "이미 사용중인 이메일";
                 }
             },
             error: function(err) {
-                console.log("에러 발생", err);
+                console.log("에러발생", err);
             }
         });
+    }
+    const goToindex = () => {
+        location.href = "/";
     }
 </script>
 </html>

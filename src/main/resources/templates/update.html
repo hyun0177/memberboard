@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Update Member</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      max-width: 400px;
+      width: 100%;
+    }
+    h1 {
+      color: #333;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #555;
+    }
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    input[type="submit"] {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 16px;
+    }
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+    .readonly {
+      background-color: #e9ecef;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>Update Member</h1>
+  <form action="/member/update" method="post">
+    <input type="hidden" th:value="${updateMember.id}" name="id">
+    <label for="email">이메일:</label>
+    <input type="text" id="email" th:value="${updateMember.memberEmail}" name="memberEmail" readonly class="readonly">
+
+    <label for="password">비밀번호:</label>
+    <input type="text" id="password" th:value="${updateMember.memberPassword}" name="memberPassword">
+
+    <label for="name">이름:</label>
+    <input type="text" id="name" th:value="${updateMember.memberName}" name="memberName">
+
+
+    <label for="name">나이:</label>
+    <input type="text" id="Age" th:value="${updateMember.memberAge}" name="memberAge">
+
+
+    <label for="name">핸드폰:</label>
+    <input type="text" id="Mobile" th:value="${updateMember.memberMobile}" name="memberMobile">
+
+    <input type="submit" value="정보수정">
+  </form>
+</div>
+</body>
+</html>

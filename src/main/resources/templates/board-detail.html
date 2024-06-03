@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 상세보기</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+            text-align: left;
+        }
+        th:first-child, td:first-child {
+            width: 120px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        .button-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .button-container button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .button-container button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>게시글 상세보기</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <td th:text="${board.id}"></td>
+        </tr>
+        <tr>
+            <th>제목</th>
+            <td th:text="${board.boardTitle}"></td>
+        </tr>
+        <tr>
+            <th>작성자</th>
+            <td th:text="${board.boardWriter}"></td>
+        </tr>
+        <tr>
+            <th>작성일</th>
+            <td th:text="${board.boardCreatedTime}"></td>
+        </tr>
+        <tr>
+            <th>조회수</th>
+            <td th:text="${board.boardHits}"></td>
+        </tr>
+        <tr>
+            <th>내용</th>
+            <td th:text="${board.boardContents}"></td>
+        </tr>
+        <tr th:if="${board.fileAttached == 1}">
+            <th>이미지</th>
+            <td><img th:src="@{|/upload/${board.storedFileName}|}" alt=""></td>
+        </tr>
+    </table>
+    <div class="button-container">
+        <button onclick="listReq()"><i class="fas fa-list"></i> 목록</button>
+        <button onclick="updateReq()"><i class="fas fa-edit"></i> 수정</button>
+        <button onclick="deleteReq()"><i class="fas fa-trash-alt"></i> 삭제</button>
+    </div>
+</div>
+</body>
+<script th:inline="javascript">
+    const listReq = () => {
+        const page = [[${page}]];
+        location.href = "/board/board-paging?page="+page;
+    }
+    const updateReq = () => {
+        const id = [[${board.id}]];
+        location.href = "/board/board-update/" + id;
+    }
+    const deleteReq = () => {
+        const id = [[${board.id}]];
+        location.href = "/board/board-delete/" + id;
+    }
+</script>
+</html>

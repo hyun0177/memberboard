@@ -59,10 +59,8 @@
         <input type="password" name="memberPassword" id="memberPassword" placeholder="비밀번호">
         <input type="submit" value="로그인">
     </form>
-    <c:if test="${not empty errorMessage}">
-        ${errorMessage}
-    </c:if>
-    <button onclick="goToIndex()">뒤로가기</button>
+    <button onclick="goToSave()">회원 가입</button>
+    <button onclick="goToindex()">시작 화면</button>
 </div>
 <script>
     function validateLogin() {
@@ -76,8 +74,11 @@
             return false;
         }
     }
-    const goToIndex = () => {
-        location.href = "/member/index";
+    const goToSave = () => {
+        location.href = "/member/save";
+    }
+    const goToindex = () => {
+        location.href = "/";
     }
 </script>
 </body>

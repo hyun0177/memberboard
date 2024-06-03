@@ -34,14 +34,14 @@
         }
     </style>
 </head>
-<p th:text="${session.loginName} + ' 님 환영합니다'"></p>
-<button onclick="goToIndexWrite()">글쓰기</button>
+<p th:text="${session.loginEmail} + ' 님 환영합니다'"></p>
+<button onclick="goToBoardIndex()">글목록</button>
 <button onclick="goToUpdate()">내 정보 수정하기</button>
 <button onclick="logout()">로그아웃</button>
 
 <script>
-    const goToIndexWrite = () => {
-        location.href = "/member/index_write";
+    const goToBoardIndex = () => {
+        location.href = "/board/board-index";
     }
     const goToUpdate = () => {
         location.href = "/member/update";

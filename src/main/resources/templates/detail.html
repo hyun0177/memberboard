@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Member Details</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background-color: #007bff;
+      color: white;
+    }
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+    h1 {
+      color: #333;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>Member Details</h1>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Email</th>
+      <th>Password</th>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Mobile</th>
+    </tr>
+    <tr>
+      <td th:text="${member.id}"></td>
+      <td th:text="${member.memberEmail}"></td>
+      <td th:text="${member.memberPassword}"></td>
+      <td th:text="${member.memberName}"></td>
+      <td th:text="${member.memberAge}"></td>
+      <td th:text="${member.memberMobile}"></td>
+    </tr>
+  </table>
+
+</div>
+</body>
+</html>
