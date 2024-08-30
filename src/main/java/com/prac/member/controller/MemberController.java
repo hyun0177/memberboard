@@ -18,27 +18,28 @@ public class MemberController {
 
     @GetMapping("/member/save")
     public String saveForm() {
-        return "save";
+        return "member/save";
     }
     @PostMapping("/member/save")
     public String save(@ModelAttribute MemberDTO memberDTO) {
         memberService.save(memberDTO);
-        return "login";
+        return "member/login";
     }
     @GetMapping("/member/login")
     public String loginForm() {
-        return "login";
+        return "/member/login";
     }
     @PostMapping("/member/login")
     public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session) {
         MemberDTO loginResult = memberService.login(memberDTO);
         if (loginResult != null) {
-            session.setAttribute("loginEmail", loginResult.getMemberEmail());
-            return "main";
+            session.setAttribute("loginMember", loginResult);
+            return "redirect:/board";
         } else {
-            return "login";
+            return "/member/login";
         }
     }
+
     @GetMapping("/member/")
     public String findAll(Model model) {
         List<MemberDTO> memberDTOList = memberService.findAll();
@@ -49,7 +50,7 @@ public class MemberController {
     public String findById(@PathVariable Long id, Model model) {
         MemberDTO memberDTO = memberService.findById(id);
         model.addAttribute("member", memberDTO);
-        return "detail";
+        return "member/detail";
     }
     @GetMapping("/member/update")
     public String updateForm(HttpSession session, Model model) {
@@ -71,7 +72,7 @@ public class MemberController {
     @GetMapping("/member/logout")
     public String logout(HttpSession session) {
         session.invalidate();
-        return "index";
+        return "redirect:/board";
     }
     @PostMapping("/member/email-check")
     public @ResponseBody String emailCheck(@RequestParam("memberEmail") String memberEmail) {

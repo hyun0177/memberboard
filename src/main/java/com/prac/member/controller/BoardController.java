@@ -2,8 +2,10 @@ package com.prac.member.controller;
 
 import com.prac.member.dto.BoardDTO;
 import com.prac.member.dto.CommentDTO;
+import com.prac.member.dto.MemberDTO;
 import com.prac.member.service.BoardService;
 import com.prac.member.service.CommentService;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,37 +19,36 @@ import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/board")
+
 public class BoardController {
     private final BoardService boardService;
     private final CommentService commentService;
 
-    @GetMapping("/board-index")
+    @GetMapping("/board/index")
     public String boardIndex() {
-        return "board-index";
+        return "board/index";
     }
 
-    @GetMapping("/board-save")
-    public String saveForm() {
-        return "board-save";
+    @GetMapping("/board/save")
+    public String saveForm() { return "board/save";
     }
 
-    @PostMapping("/board-save")
+    @PostMapping("/board/save")
     public String save(@ModelAttribute BoardDTO boardDTO) throws IOException {
-        System.out.println("boardDTO = " + boardDTO);
         boardService.save(boardDTO);
-        return "board-index";
+        return "redirect:/board";
     }
 
-    @GetMapping("/")
+    @GetMapping("/board")
     public String findAll(Model model) {
         // DB에서 전체 게시글 데이터를 가져와서 list.html에 보여준다.
+
         List<BoardDTO> boardDTOList = boardService.findAll();
         model.addAttribute("boardList", boardDTOList);
-        return "board-list";
+        return "board/list";
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("board/{id}")
     public String findById(@PathVariable Long id, Model model,
                            @PageableDefault(page=1) Pageable pageable) {
         /*
@@ -61,28 +62,28 @@ public class BoardController {
         model.addAttribute("commentList", commentDTOList);
         model.addAttribute("board", boardDTO);
         model.addAttribute("page", pageable.getPageNumber());
-        return "board-detail";
+        return "board/detail";
     }
 
-    @GetMapping("/board-update/{id}")
+    @GetMapping("/board/update/{id}")
     public String updateForm(@PathVariable Long id, Model model) {
         BoardDTO boardDTO = boardService.findById(id);
         model.addAttribute("boardUpdate", boardDTO);
-        return "board-update";
+        return "board/update";
     }
 
-    @PostMapping("/board-update")
+    @PostMapping("/board/update")
     public String update(@ModelAttribute BoardDTO boardDTO, Model model) {
         BoardDTO board = boardService.update(boardDTO);
         model.addAttribute("board", board);
-        return "board-detail";
+        return "board/detail";
 //        return "redirect:/board/" + boardDTO.getId();
     }
 
-    @GetMapping("/board-delete/{id}")
+    @GetMapping("/board/delete/{id}")
     public String delete(@PathVariable Long id) {
         boardService.delete(id);
-        return "redirect:/board/";
+        return "redirect:/board";
     }
 
     // /board/paging?page=1

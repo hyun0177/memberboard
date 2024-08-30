@@ -18,7 +18,7 @@ public class BoardEntity extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // auto_increment
     private Long id;
 
-    @Column(length = 20, nullable = false) // 크기 20, not null
+    @Column(length = 100, nullable = false) // 크기 20, not null
     private String boardWriter;
 
     @Column // 크기 255, null 가능

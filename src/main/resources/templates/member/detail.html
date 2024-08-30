@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/layout-sample}">
+
+<th:block layout:fragment="content">
+  <div class="row main-head ">
+    <div class="col-12 main-title ">
+      회원 정보
+      <div th:if="${session.loginMember}">
+        <p>Welcome, <span th:text="${session.loginMember.memberName}"></span></p>
+        <a href="/member/logout" class="button" style="float: right;">로그 아웃</a>
+        <!-- 로그인된 사용자의 정보 표시 -->
+      </div>
+      <div th:if="${session.loginMember == null}">
+        <a href="/member/save" class="button" style="float: right;">회원 가입</a>
+        <a href="/member/login" class="button" style="float: right; margin-right: 10px;">로그인</a>
+      </div>
+    </div>
+  </div>
+  <div class="row ">
+    <div class="table-responsive portlet">
+      <table class="table table-sm table-hover tb-success">
+        <tr class="center">
+          <th>ID</th>
+          <th>Email</th>
+          <th>Password</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Mobile</th>
+        </tr>
+        <tr>
+          <td th:text="${member.id}"></td>
+          <td th:text="${member.memberEmail}"></td>
+          <td th:text="${member.memberPassword}"></td>
+          <td th:text="${member.memberName}"></td>
+          <td th:text="${member.memberAge}"></td>
+          <td th:text="${member.memberMobile}"></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</th:block>

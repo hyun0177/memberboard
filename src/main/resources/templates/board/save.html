@@ -52,13 +52,7 @@
     </style>
 </head>
 <body>
-<form action="/board/board-save" method="post" enctype="multipart/form-data">
-    <label for="boardWriter">작성자:</label>
-    <input type="text" id="boardWriter" name="boardWriter" required> <br>
-
-    <label for="boardPass">비밀번호:</label>
-    <input type="password" id="boardPass" name="boardPass" required> <br>
-
+<form action="/board/save" method="post" enctype="multipart/form-data">
     <label for="boardTitle">제목:</label>
     <input type="text" id="boardTitle" name="boardTitle" required> <br>
 
@@ -67,6 +61,8 @@
 
     <label for="boardFile">파일:</label>
     <input type="file" id="boardFile" name="boardFile"> <br>
+
+    <input type="hidden" name="boardWriter" th:value="${session.loginMember.memberEmail}"> <br>
 
     <input type="submit" value="글 작성">
 </form>

@@ -2,18 +2,20 @@ server:
   port: 8080
 
 spring:
-  application:
-    name: member_board
   datasource:
-      driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/db_memberboard?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
-      username: user_memberboard
-      password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/db_boardmember?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: memberboard
+    password: qwer1234
   thymeleaf:
-      cache: false
+    cache: false
+    check-template-location: true
+    prefix: classpath:/templates/
+    suffix: .html
+    enabled: true
 
   jpa:
-      open-in-view: false
-      show-sql: true
-      hibernate:
-        ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    open-in-view: false
+    show-sql: true
+    hibernate.hbm2ddl.auto: update

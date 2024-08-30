@@ -90,11 +90,11 @@
                 "memberEmail": email
             },
             success: function(res) {
-                console.log("요청성공", res);
+                console.log("요청 성공", res);
                 if (res == "ok") {
-                    console.log("사용가능한 이메일");
+                    console.log("사용 가능한 이메일");
                     checkResult.style.color = "green";
-                    checkResult.innerHTML = "사용가능한 이메일";
+                    checkResult.innerHTML = "사용 가능한 이메일";
                 } else {
                     console.log("이미 사용중인 이메일");
                     checkResult.style.color = "red";
@@ -102,12 +102,12 @@
                 }
             },
             error: function(err) {
-                console.log("에러발생", err);
+                console.log("에러 발생", err);
             }
         });
     }
     const goToindex = () => {
-        location.href = "/";
+        location.href = "/board/list";
     }
 </script>
 </html>

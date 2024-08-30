@@ -14,10 +14,10 @@ import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/comment")
+
 public class CommentController {
     private final CommentService commentService;
-    @PostMapping("/board-save")
+    @PostMapping("/comment/save")
     public ResponseEntity save(@ModelAttribute CommentDTO commentDTO) {
         System.out.println("commentDTO = " + commentDTO);
         Long saveResult = commentService.save(commentDTO);

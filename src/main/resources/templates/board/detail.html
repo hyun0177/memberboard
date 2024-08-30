@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns=""
+      layout:decorate="~{/layouts/layout-sample}">
+
+<th:block layout:fragment="content">
+    <div class="row main-head">
+        <div class="col-12 main-title">
+            <div th:if="${session.loginMember}">
+                <p>Welcome, <span th:text="${session.loginMember.memberName}"></span></p>
+                <a href="/member/logout" class="button" style="float: right;">로그 아웃</a>
+            </div>
+            <div th:if="${session.loginMember == null}">
+                <a href="/member/save" class="button" style="float: right;">회원 가입</a>
+                <a href="/member/login" class="button" style="float: right; margin-right: 10px;">로그인</a>
+            </div>
+        </div>
+    </div>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>게시글 조회</title>
+        <style>
+            /* 스타일링 코드 */
+        </style>
+    </head>
+    <body>
+    <div class="container">
+        <h1 th:text="${board.boardTitle}">게시글 제목</h1>
+        <div class="post-info">
+            <table>
+                <tr>
+                    <th>작성자</th>
+                    <td th:text="${board.boardWriter}"></td>
+                    <th>작성일</th>
+                    <td th:text="*{#temporals.format(board.boardCreatedTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                    <th>조회수</th>
+                    <td th:text="${board.boardHits}"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="post-content">
+            <p th:text="${board.boardContents}">게시글 내용</p>
+            <div th:if="${board.fileAttached == 1}">
+                <img th:src="@{|/upload/${board.storedFileName}|}" alt="첨부된 이미지">
+            </div>
+        </div>
+        <a href="/board" style="display: block; text-align: left;">목록으로</a>
+        <div class="button-container">
+            <div th:if="${session.loginMember != null and session.loginMember.memberEmail == board.boardWriter}">
+                <a th:href="@{/board/update/{id}(id=${board.id})}">수정</a>
+                <a th:href="@{/board/delete/{id}(id=${board.id})}">삭제</a>
+            </div>
+        </div>
+        <div th:if="${session.loginMember != null}">
+            <div id="comment-write">
+                <input type="text" id="commentWriter" th:value="${session.loginMember.memberEmail}" readonly>
+                <input type="text" id="commentContents" placeholder="내용">
+                <button id="comment-write-btn" onclick="commentWrite()">댓글 작성</button>
+            </div>
+        </div>
+    </div>
+    <!-- 댓글 출력 부분 -->
+    <div id="comment-list">
+        <table>
+            <tr>
+                <th>댓글번호</th>
+                <th>작성자</th>
+                <th>내용</th>
+                <th>작성시간</th>
+            </tr>
+            <tr th:each="comment: ${commentList}">
+                <td th:text="${comment.id}"></td>
+                <td th:text="${comment.commentWriter}"></td>
+                <td th:text="${comment.commentContents}"></td>
+                <td th:text="*{#temporals.format(board.boardCreatedTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+            </tr>
+        </table>
+    </div>
+    </body>
+    <script th:inline="javascript">
+        const commentWrite = () => {
+            const writer = document.getElementById("commentWriter").value;
+            const contents = document.getElementById("commentContents").value;
+            console.log("작성자: ", writer);
+            console.log("내용: ", contents);
+            const id = [[${board.id}]];
+            $.ajax({
+                type: "post",
+                url: "/comment/save",
+                data: {
+                    "commentWriter": writer,
+                    "commentContents": contents,
+                    "boardId": id
+                },
+                success: function (res) {
+                    console.log("요청 성공", res);
+                    let output = "<table>";
+                    output += "<tr><th>댓글번호</th>";
+                    output += "<th>작성자</th>";
+                    output += "<th>내용</th>";
+                    output += "<th>작성시간</th></tr>";
+                    for (let i in res) {
+                        output += "<tr>";
+                        output += "<td>" + res[i].id + "</td>";
+                        output += "<td>" + res[i].commentWriter + "</td>";
+                        output += "<td>" + res[i].commentContents + "</td>";
+                        output += "<td>" + res[i].commentCreatedTime + "</td>";
+                        output += "</tr>";
+                    }
+                    output += "</table>";
+                    document.getElementById('comment-list').innerHTML = output;
+                    document.getElementById('commentContents').value = '';
+                },
+                error: function (err) {
+                    console.log("요청 실패", err);
+                }
+            });
+        }
+    </script>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="aside">
+    <aside class="side-container">
+        <div class="vertical-menu ">
+            <button type="button" class="btn btn-success w-100 text-start"><span class="fa fa-home"></span> Home</button>
+            <hr>
+            <div th:if="${session.loginMember}">
+                <a href="/board/save"><i class="fas fa-arrow-alt-circle-right"></i><span>&nbsp; 글쓰기</span></a>
+                <a th:href="@{/member/{id}(id=${session.loginMember.id})}"><i class=" fas fa-user-circle"></i><span>&nbsp; 회원 정보</span></a>
+            </div>
+            <a href="/board"><i class="fas fa-arrow-alt-circle-right"></i><span>&nbsp; 게시판</span></a>
+        </div>
+    </aside>
+</th:block>
+</html>

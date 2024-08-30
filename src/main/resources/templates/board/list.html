@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/layout-sample}">
+
+<th:block layout:fragment="content">
+    <div class="row main-head ">
+        <div class="col-12 main-title ">
+            자유게시판
+            <div th:if="${session.loginMember}">
+                <p>Welcome, <span th:text="${session.loginMember.memberName}"></span></p>
+                <a href="/member/logout" class="button" style="float: right;">로그 아웃</a>
+                <!-- 로그인된 사용자의 정보 표시 -->
+            </div>
+            <div th:if="${session.loginMember == null}">
+                <a href="/member/save" class="button" style="float: right;">회원 가입</a>
+                <a href="/member/login" class="button" style="float: right; margin-right: 10px;">로그인</a>
+        </div>
+    </div>
+    <div class="row ">
+        <div class="table-responsive portlet">
+            <table class="table table-sm table-hover tb-success">
+                <tr class="center">
+                    <th>글번호</th>
+                    <th>제목</th>
+                    <th>글쓴이</th>
+                    <th>작성 시간</th>
+                    <th>조회수</th>
+                </tr>
+                <th:block th:each="board: ${boardList}">
+                    <tr>
+                        <td th:text="${board.id}"></td>
+                        <td><a th:href="@{|/board/${board.id}|}" th:text="${board.boardTitle}"></a></td>
+                        <td th:text="${board.boardWriter}"></td>
+                        <td th:text="*{#temporals.format(board.boardCreatedTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                        <td th:text="${board.boardHits}"></td>
+                    </tr>
+                </th:block>
+            </table>
+        </div>
+    </div>
+    </div>
+</th:block>
+</html>
