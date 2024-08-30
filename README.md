@@ -1,7 +1,6 @@
 # Basic board Project
 > 웹 기본 게시판 프로젝트
-
-![메인 화면](https://user-images.githubusercontent.com/59757689/149616313-dbeace05-67dc-4d70-b6a1-630d601b6455.PNG)
+<img width="1429" alt="메인" src="https://github.com/user-attachments/assets/99c92537-d361-422c-b7ff-74ef52e076d9">
 
 ## 목차
 - [들어가며](#들어가며)
