@@ -1,5 +1,5 @@
 # Basic board Project
-> 웹 기본 게시판 프로젝트
+> 웹 기본 게시판 프로젝트(미완)
 <img width="1429" alt="메인" src="https://github.com/user-attachments/assets/99c92537-d361-422c-b7ff-74ef52e076d9">
 
 ## 목차
