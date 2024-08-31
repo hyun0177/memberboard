@@ -97,18 +97,11 @@
 <img width="1422" alt="스크린샷 2024-08-31 09 14 48" src="https://github.com/user-attachments/assets/f1e56d8d-02f0-455d-8e6b-5738b218c744">
 
   **5. 게시글 삭제 화면**   
-  ![image](https://user-images.githubusercontent.com/59757689/156976055-d6e8f6bd-9bda-4fc8-bb5f-3ea60d9f2f5d.png)   
-  ![image](https://user-images.githubusercontent.com/59757689/156976074-c27f90c8-c8e0-45b9-9d04-e3541a14b8c2.png)   
-  Confirm으로 삭제할지 확인하고, 삭제 후 전체 목록 리스트 화면으로 redirect 한다.   
   
-  **6. 게시글 검색 화면**   
-  ![image](https://user-images.githubusercontent.com/59757689/156976190-1dac1678-3cf4-4d21-9f3b-d5228b7d50ef.png)   
-  검색 키워드에 포함된 글을 모두 보여준다.   
-     
-  **6-1. 게시글 검색 후 페이징 화면**   
-  ![image](https://user-images.githubusercontent.com/59757689/156976258-c4b28ef3-fd6e-4ebe-834c-d5c6bce4c02c.png)   
-  ![image](https://user-images.githubusercontent.com/59757689/156976314-c6733cb8-7aac-4502-88d4-02730f88021b.png)   
-  검색된 게시글이 많을 경우 다음과 같이 페이징 처리되어 조회할 수 있다.   
+  작성자와 , 현재 로그인한 사용자가 같을 때만 삭제 버튼이 보이도록 처리, 누르면 해당 게시글은 삭제, 이후 리다이렉트
+  <img width="715" alt="스크린샷 2024-08-31 09 18 21" src="https://github.com/user-attachments/assets/cf748ddb-ed79-45fd-bbbd-996b6e9c606b">
+<img width="1427" alt="스크린샷 2024-08-31 09 18 40" src="https://github.com/user-attachments/assets/d61d1a64-81e4-419e-9221-d304309f19a1">
+ 
      
   </details>
   <br/>   
@@ -116,11 +109,11 @@
   <details>
     <summary>회원 관련</summary>   
      
-  **1. 회원가입 화면**   
-  ![image](https://user-images.githubusercontent.com/59757689/156976413-78b9e0e9-2ab1-47e0-a0cd-699ebacddb79.png)   
-  ![image](https://user-images.githubusercontent.com/59757689/156976436-fafec47f-3df3-4356-83d5-eb80e1aa2276.png)   
-  ![image](https://user-images.githubusercontent.com/59757689/156976548-3a440a6c-49d0-4e5c-9eb3-d5e3524c11b6.png)   
-  회원가입 시 유효성 검사 및 중복확인을 진행하며 완료시 회원 정보를 저장하고 로그인 화면으로 이동한다.   
+  **1. 회원가입 화면**     
+  회원가입 시 유효성 검사 및 중복확인을 진행하며 완료시 회원 정보를 저장하고 로그인 화면으로 이동한다.  
+  <img width="433" alt="스크린샷 2024-08-31 09 20 33" src="https://github.com/user-attachments/assets/75d79e3b-7b83-4950-ac0d-81b34ae4651b">
+<img width="449" alt="스크린샷 2024-08-31 09 21 19" src="https://github.com/user-attachments/assets/64ad0ecc-527a-48f6-95a3-1222fdf31e3c">
+
      
   **2. 로그인 화면**   
   ![image](https://user-images.githubusercontent.com/59757689/156976619-6988837d-0dfe-4600-a63c-2e287db9c88e.png)   
