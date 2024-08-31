@@ -136,19 +136,7 @@
   <img width="1428" alt="스크린샷 2024-08-31 09 25 37" src="https://github.com/user-attachments/assets/6610078b-40be-4284-9ed9-d6385eb2fe62">
   </br>
   <로그인o></br>
-  <img width="696" alt="스크린샷 2024-08-31 09 26 21" src="https://github.com/user-attachments/assets/0201fd29-6e28-4f2d-8fe2-a9a34ade30f1">
-
-  
-  **2. 댓글 수정**   
-  ![image](https://user-images.githubusercontent.com/59757689/156977557-8a3dae77-9a8d-4fd3-824e-8ff22606609e.png)   
-  다른 사용자는 다른 사람의 댓글을 수정/삭제할 수 없다.   
-  ![image](https://user-images.githubusercontent.com/59757689/156977567-fd983777-5b04-4f57-a815-c89a59697377.png)   
-  수정은 댓글 작성자만이 할 수 있다. 수정 완료 후 현재 페이지를 reload 한다.   
-  
-  **3. 댓글 삭제**   
-  ![image](https://user-images.githubusercontent.com/59757689/156977655-8125a317-344e-4721-a836-46b36df3a3b5.png)   
-  ![image](https://user-images.githubusercontent.com/59757689/156977661-5008733b-2932-4bfc-be01-60a33a093dc9.png)   
-  삭제 또한 댓글 작성자만이 할 수 있다. 삭제 후 현재 페이지를 reload 한다.   
+  <img width="696" alt="스크린샷 2024-08-31 09 26 21" src="https://github.com/user-attachments/assets/0201fd29-6e28-4f2d-8fe2-a9a34ade30f1">  
            
   </details>
   <br/>   
@@ -164,99 +152,68 @@
  
 
 ```
-📦src
- ┣ 📂main
- ┃ ┣ 📂java
- ┃ ┃ ┗ 📂com
- ┃ ┃ ┃ ┗ 📂coco
- ┃ ┃ ┃ ┃ ┗ 📂board
- ┃ ┃ ┃ ┃ ┃ ┣ 📂application
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂dto
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CommentDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜PostsDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂security
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂auth
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CustomAuthFailureHandler.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CustomUserDetails.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CustomUserDetailsService.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜LoginUser.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜LoginUserArgumentResolver.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂oauth
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CustomOAuth2UserService.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜OAuthAttributes.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂validator
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜AbstractValidator.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜CustomValidators.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CommentService.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜PostsService.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserService.java
- ┃ ┃ ┃ ┃ ┃ ┣ 📂domain
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜BaseTimeEntity.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜Comment.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜Posts.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜Role.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜User.java
- ┃ ┃ ┃ ┃ ┃ ┣ 📂infrastructure
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂config
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜SecurityConfig.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜WebConfig.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂persistence
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CommentRepository.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜PostsRepository.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserRepository.java
- ┃ ┃ ┃ ┃ ┃ ┣ 📂presentation
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CommentApiController.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜PostsApiController.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜PostsIndexController.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜UserApiController.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserController.java
- ┃ ┃ ┃ ┃ ┃ ┗ 📜BoardApplication.java
- ┃ ┗ 📂resources
- ┃ ┃ ┣ 📂static
- ┃ ┃ ┃ ┣ 📂css
- ┃ ┃ ┃ ┃ ┗ 📜app.css
- ┃ ┃ ┃ ┣ 📂img
- ┃ ┃ ┃ ┃ ┗ 📜naver.ico
- ┃ ┃ ┃ ┗ 📂js
- ┃ ┃ ┃ ┃ ┗ 📜app.js
- ┃ ┃ ┣ 📂templates
- ┃ ┃ ┃ ┣ 📂comment
- ┃ ┃ ┃ ┃ ┣ 📜form.mustache
- ┃ ┃ ┃ ┃ ┗ 📜list.mustache
- ┃ ┃ ┃ ┣ 📂layout
- ┃ ┃ ┃ ┃ ┣ 📜footer.mustache
- ┃ ┃ ┃ ┃ ┗ 📜header.mustache
- ┃ ┃ ┃ ┣ 📂posts
- ┃ ┃ ┃ ┃ ┣ 📜posts-page.mustache
- ┃ ┃ ┃ ┃ ┣ 📜posts-read.mustache
- ┃ ┃ ┃ ┃ ┣ 📜posts-search.mustache
- ┃ ┃ ┃ ┃ ┣ 📜posts-update.mustache
- ┃ ┃ ┃ ┃ ┗ 📜posts-write.mustache
- ┃ ┃ ┃ ┣ 📂user
- ┃ ┃ ┃ ┃ ┣ 📜user-join.mustache
- ┃ ┃ ┃ ┃ ┣ 📜user-login.mustache
- ┃ ┃ ┃ ┃ ┗ 📜user-modify.mustache
- ┃ ┃ ┃ ┗ 📜index.mustache
- ┃ ┃ ┣ 📜application-oauth.properties
- ┃ ┃ ┗ 📜application.properties
- ┗ 📂test
- ┃ ┗ 📂java
- ┃ ┃ ┗ 📂com
- ┃ ┃ ┃ ┗ 📂coco
- ┃ ┃ ┃ ┃ ┗ 📂board
- ┃ ┃ ┃ ┃ ┃ ┣ 📂controller
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜PostsApiControllerTest.java
- ┃ ┃ ┃ ┃ ┃ ┣ 📂domain
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CommentRepositoryTest.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜PostsRepositoryTest.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserRepositoryTest.java
- ┃ ┃ ┃ ┃ ┃ ┣ 📂infrastructure
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂config
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜SecurityConfigTest.java
- ┃ ┃ ┃ ┃ ┃ ┣ 📂service
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜PostsServiceTest.java
- ┃ ┃ ┃ ┃ ┃ ┗ 📜BoardApplicationTests.java
+
+├── src
+│   ├── main
+│   │   ├── java
+│   │   │   └── com
+│   │   │       └── prac
+│   │   │           └── member
+│   │   │               ├── MemberBoardApplication.java
+│   │   │               ├── config
+│   │   │               │   └── WebConfig.java
+│   │   │               ├── controller
+│   │   │               │   ├── BoardController.java
+│   │   │               │   ├── CommentController.java
+│   │   │               │   ├── HomeController.java
+│   │   │               │   └── MemberController.java
+│   │   │               ├── dto
+│   │   │               │   ├── BoardDTO.java
+│   │   │               │   ├── CommentDTO.java
+│   │   │               │   └── MemberDTO.java
+│   │   │               ├── entity
+│   │   │               │   ├── BaseEntity.java
+│   │   │               │   ├── BoardEntity.java
+│   │   │               │   ├── BoardFileEntity.java
+│   │   │               │   ├── CommentEntity.java
+│   │   │               │   └── MemberEntity.java
+│   │   │               ├── repository
+│   │   │               │   ├── BoardFileRepository.java
+│   │   │               │   ├── BoardRepository.java
+│   │   │               │   ├── CommentRepository.java
+│   │   │               │   └── MemberRepository.java
+│   │   │               └── service
+│   │   │                   ├── BoardService.java
+│   │   │                   ├── CommentService.java
+│   │   │                   └── MemberService.java
+│   │   └── resources
+│   │       ├── application.yml
+│   │       └── templates
+│   │           ├── board
+│   │           │   ├── detail.html
+│   │           │   ├── index.html
+│   │           │   ├── list.html
+│   │           │   ├── paging.html
+│   │           │   ├── save.html
+│   │           │   └── update.html
+│   │           ├── layouts
+│   │           │   ├── layout-sample.html
+│   │           │   ├── sample-aside.html
+│   │           │   └── sample-footer.html
+│   │           └── member
+│   │               ├── detail.html
+│   │               ├── index.html
+│   │               ├── list.html
+│   │               ├── login.html
+│   │               ├── main.html
+│   │               ├── save.html
+│   │               └── update.html
+│   └── test
+│       └── java
+│           └── com
+│               └── prac
+│                   └── member
+│                       └── MemberBoardApplicationTests.java
  ```
   
  </details>   
