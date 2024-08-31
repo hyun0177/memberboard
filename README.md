@@ -110,25 +110,17 @@
     <summary>회원 관련</summary>   
      
   **1. 회원가입 화면**     
+  
   회원가입 시 유효성 검사 및 중복확인을 진행하며 완료시 회원 정보를 저장하고 로그인 화면으로 이동한다.  
   <img width="433" alt="스크린샷 2024-08-31 09 20 33" src="https://github.com/user-attachments/assets/75d79e3b-7b83-4950-ac0d-81b34ae4651b">
-<img width="449" alt="스크린샷 2024-08-31 09 21 19" src="https://github.com/user-attachments/assets/64ad0ecc-527a-48f6-95a3-1222fdf31e3c">
+  <img width="449" alt="스크린샷 2024-08-31 09 21 19" src="https://github.com/user-attachments/assets/64ad0ecc-527a-48f6-95a3-1222fdf31e3c">
 
      
   **2. 로그인 화면**   
-  ![image](https://user-images.githubusercontent.com/59757689/156976619-6988837d-0dfe-4600-a63c-2e287db9c88e.png)   
-  ![image](https://user-images.githubusercontent.com/59757689/156976909-51b0d06c-502f-4e42-b0dd-516834e43efe.png)   
-  로그인 실패시 어떤 이유로 실패 했는지 메시지가 나오고, 로그인에 성공하면 게시글 전체 리스트 화면으로 redirect 한다.   
-     
-  **2-1. OAuth 2.0 소셜 로그인 화면**   
-  ![image](https://user-images.githubusercontent.com/59757689/156976991-c517d254-b4b8-4a34-99fd-2684856f2a2d.png)   
-  ![image](https://user-images.githubusercontent.com/59757689/156977007-7b44d157-f29c-4a43-9fd3-aa6b743a8fb8.png)   
-  구글과 네이버 로그인이 가능하다.   
-     
-  **3. 회원정보 수정 화면**   
-  ![image](https://user-images.githubusercontent.com/59757689/156977253-d1a4de93-da30-4adf-8634-dfe10d0635a8.png)   
-  닉네임과 비밀번호만 변경할 수 있고, 변경된 닉네임이 이미 사용중일 경우 alert으로 현재 사용 중임을 알려주고,   
-  완료시 게시글 전체 리스트 화면으로 redirect 한다.      
+ 
+  로그인에 성공하면 게시글 전체 리스트 화면으로 이동한다.  
+  <img width="544" alt="스크린샷 2024-08-31 09 23 10" src="https://github.com/user-attachments/assets/e2f13837-fffe-4f41-a854-a9e5df1fad54">
+<img width="1435" alt="스크린샷 2024-08-31 09 23 20" src="https://github.com/user-attachments/assets/6ddcbf19-b222-4548-82ca-ab84ea86ccd5">     
            
   </details>
   <br/>   
@@ -137,10 +129,15 @@
     <summary>댓글 관련</summary>   
        
   **1. 댓글 작성 화면**   
-  미로그인 사용자 화면   
-  ![image](https://user-images.githubusercontent.com/59757689/156977476-37db357a-ac44-4b24-ad8c-a062d4fe99cf.png)   
-  ![image](https://user-images.githubusercontent.com/59757689/156977497-cc7fc2a7-e688-4733-b4c7-8aef4fba93e3.png)   
-  댓글은 로그인 한 사용자만 달 수 있으며, 댓글 작성시 현재 페이지를 reload 한다.   
+  
+  댓글은 로그인 한 사용자만 달 수 있으며, 댓글 등록이 성공하면 화면을 갱신한다.
+
+  <로그인x>
+  <img width="1428" alt="스크린샷 2024-08-31 09 25 37" src="https://github.com/user-attachments/assets/6610078b-40be-4284-9ed9-d6385eb2fe62">
+  </br>
+  <로그인o></br>
+  <img width="696" alt="스크린샷 2024-08-31 09 26 21" src="https://github.com/user-attachments/assets/0201fd29-6e28-4f2d-8fe2-a9a34ade30f1">
+
   
   **2. 댓글 수정**   
   ![image](https://user-images.githubusercontent.com/59757689/156977557-8a3dae77-9a8d-4fd3-824e-8ff22606609e.png)   
