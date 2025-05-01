@@ -91,7 +91,7 @@
             },
             success: function(res) {
                 console.log("요청 성공", res);
-                if (res == "ok") {
+                if (res === "ok") {
                     console.log("사용 가능한 이메일");
                     checkResult.style.color = "green";
                     checkResult.innerHTML = "사용 가능한 이메일";

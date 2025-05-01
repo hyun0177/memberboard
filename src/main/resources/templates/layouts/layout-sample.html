@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ko"
       xmlns:th="http://www.thymeleaf.org"
@@ -85,12 +86,12 @@
 <body>
 <div class="body-container">
 
-    <aside th:replace="/layouts/sample-aside :: aside"></aside>
+    <aside th:replace="~{/layouts/sample-aside :: aside}"></aside>
 
     <div class="main-container">
         <div class="content-container">
             <th:block layout:fragment="content"></th:block>
-            <footer th:replace="/layouts/sample-footer :: footer"></footer>
+            <footer th:replace="~{/layouts/sample-footer :: footer}"></footer>
         </div>
     </div>
 </div>

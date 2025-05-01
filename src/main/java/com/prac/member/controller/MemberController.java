@@ -12,6 +12,8 @@ import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*")
+
 public class MemberController {
 
     private final MemberService memberService;

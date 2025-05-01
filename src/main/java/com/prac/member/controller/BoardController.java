@@ -19,6 +19,7 @@ import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*")
 
 public class BoardController {
     private final BoardService boardService;
